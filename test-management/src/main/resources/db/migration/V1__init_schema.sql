@@ -1,4 +1,4 @@
-4-- ============================================================
+-- ============================================================
 -- Test Management System — Database Schema
 -- V1__init_schema.sql
 -- ============================================================
@@ -162,6 +162,8 @@ CREATE TABLE executions (
     executed_by     UUID         REFERENCES users(id) ON DELETE SET NULL,
     executed_at     TIMESTAMPTZ,
     duration_secs   INT,
+    created_at      TIMESTAMPTZ  NOT NULL DEFAULT NOW(),
+    updated_at      TIMESTAMPTZ  NOT NULL DEFAULT NOW(),
     UNIQUE (test_run_id, test_case_id)
 );
 
